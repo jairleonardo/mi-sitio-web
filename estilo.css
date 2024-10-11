@@ -1,0 +1,232 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; 
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.accordion {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;  /* Distribuye el texto a la izquierda y la flecha a la derecha */
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    color: #333;
+}
+
+.accordion-header:hover {
+    background-color: #e9e9e9;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    background-color: #fafafa;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.accordion-header .arrow {
+    font-size: 18px;
+    margin-left: 10px; /* Espacio entre el texto y la flecha */
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active .arrow {
+    transform: rotate(180deg); /* Rotar la flecha cuando está activo */
+}
+
+.accordion-header.active {
+    background-color: #e0e0e0;
+}
+
+header {
+    background-color: #004080; /* Color azul oscuro para un aspecto más profesional */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    margin-left: 20px; /* Mueve el h1 hacia la derecha */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; /* Hacer que los enlaces se destaquen */
+}
+
+.search {
+    margin-top: 10px;
+}
+
+.search input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+main {
+    max-width: 800px; /* Limitar el ancho para mejorar la legibilidad */
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin: 20px 0;
+    font-size: 1.8em;
+    color: #004080; /* Color que coincide con el encabezado */
+}
+
+h3 {
+    color: #004080; /* Mantener consistencia de color */
+}
+
+.featured-image {
+    width: 100%; /* Hacer que la imagen sea responsiva */
+    height: auto; /* Mantener la relación de aspecto */
+    border-radius: 5px;
+}
+
+/* Estilo para la fecha */
+.date {
+    border-left: 5px solid #007bff; /* Línea azul a la izquierda */
+    padding: 10px 15px; /* Espaciado */
+    margin: 10px 0; /* Margen superior e inferior */
+    border-radius: 4px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    font-size: 1.1em; /* Tamaño de fuente un poco mayor */
+    display: inline-block; /* Para que se ajuste al contenido */
+}
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.comment-list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e9ecef; /* Gris claro para los comentarios */
+    border-radius: 5px;
+}
+
+.comment {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+/* Estilos del formulario */
+.contact-form {
+    margin-top: 20px;
+    background-color: #f9f9f9; /* Fondo claro para los formularios */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul ligeramente más claro al pasar el cursor */
+    color: #fff; /* Asegúrate de que el texto sea legible */
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    text-decoration: underline;
+}
+
+/* Consultas de medios para responsividad */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .search input {
+        width: 100%; /* Ajustar el ancho de la barra de búsqueda en pantallas más pequeñas */
+    }
+}
+
+
+

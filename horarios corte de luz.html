@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información sobre Cortes de Luz</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Información sobre Cortes de Luz en Ecuador</h1>
+            <nav>
+                <ul>
+                    <li><a href="Crisis Energética en Ecuador.html">Página Principal</a></li>
+                    <li><a href="#cortes">Cortes por Provincias </a></li>
+                    <li><a href="#notificaciones">Notificaciones</a></li>
+                    <li><a href="#comentarios">Comentarios</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección de Bienvenida -->
+        <h2>Bienvenida a la Página de Información sobre Cortes de Luz en Ecuador</h2>
+        <p>¡Bienvenido! Aquí podrás consultar información actualizada sobre los cortes de luz por provincia.</p>
+
+        <!-- Sección de Cortes por Región -->
+        <section id="cortes">
+            <h2>Lista de Cortes por Provincias</h2>
+            <select id="region" onchange="mostrarHorario()">
+                <option value="">Seleccione una provincia</option>
+                <option value="Azuay">Azuay</option>
+                <option value="Bolívar">Bolívar</option>
+                <option value="Cañar">Cañar</option>
+                <option value="Carchi">Carchi</option>
+                <option value="Chimborazo">Chimborazo</option>
+                <option value="Cotopaxi">Cotopaxi</option>
+                <option value="El Oro">El Oro</option>
+                <option value="Esmeraldas">Esmeraldas</option>
+                <option value="Galápagos">Galápagos</option>
+                <option value="Guayas">Guayas</option>
+                <option value="Imbabura">Imbabura</option>
+                <option value="Loja">Loja</option>
+                <option value="Los Ríos">Los Ríos</option>
+                <option value="Manabí">Manabí</option>
+                <option value="Morona Santiago">Morona Santiago</option>
+                <option value="Napo">Napo</option>
+                <option value="Orellana">Orellana</option>
+                <option value="Pastaza">Pastaza</option>
+                <option value="Pichincha">Pichincha</option>
+                <option value="Santa Elena">Santa Elena</option>
+                <option value="Santo Domingo de los Tsáchilas">Santo Domingo de los Tsáchilas</option>
+                <option value="Sucumbíos">Sucumbíos</option>
+                <option value="Tungurahua">Tungurahua</option>
+                <option value="Zamora-Chinchipe">Zamora-Chinchipe</option>
+            </select>
+            <div id="schedule-image" style="margin-top: 20px;"></div>
+            <p>Para más información sobre los cortes de luz, visita la página de <a href="http://www.celec.gob.ec/" target="_blank">CELEC EP</a>.</p>
+        </section>
+
+        <!-- Sección de Notificaciones por Correo Electrónico -->
+        <section id="notificaciones">
+            <h2>Notificaciones por Correo Electrónico</h2>
+            <form id="subscribe-form">
+                <input type="email" placeholder="Ingrese su correo" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+            <div id="subscribe-message"></div>
+        </section>
+
+        <!-- Sección de Comentarios -->
+        <section id="comentarios">
+            <h2>Comentarios</h2>
+            <form id="comment-form" onsubmit="agregarComentario(event)">
+                <input type="text" id="comment-input" placeholder="Escribe tu comentario" required>
+                <button type="submit">Enviar</button>
+            </form>
+            <div id="comment-list"></div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Información sobre Cortes de Luz en Ecuador</p>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+    <script>
+        function mostrarHorario() {
+            const selectedProvince = document.getElementById('region').value;
+            const scheduleImageDiv = document.getElementById('schedule-image');
+            
+            // Limpiar el contenido anterior
+            scheduleImageDiv.innerHTML = '';
+
+            const horarios = {
+                "Azuay": "08:00 AM - 12:00 PM",
+                "Bolívar": "08:00 AM - 10:00 AM",
+                "Cañar": "09:00 AM - 11:00 AM",
+                "Carchi": "10:00 AM - 12:00 PM",
+                "Chimborazo": "11:00 AM - 01:00 PM",
+                "Cotopaxi": "09:00 AM - 01:00 PM",
+                "El Oro": "07:00 AM - 09:00 AM",
+                "Esmeraldas": "01:00 PM - 03:00 PM",
+                "Galápagos": "11:00 AM - 01:00 PM",
+                "Guayas": "08:00 AM - 12:00 PM",
+                "Imbabura": "10:00 AM - 12:00 PM",
+                "Loja": "12:00 PM - 02:00 PM",
+                "Los Ríos": "08:00 AM - 10:00 AM",
+                "Manabí": "09:00 AM - 11:00 AM",
+                "Morona Santiago": "11:00 AM - 01:00 PM",
+                "Napo": "10:00 AM - 12:00 PM",
+                "Orellana": "09:00 AM - 11:00 AM",
+                "Pastaza": "08:00 AM - 10:00 AM",
+                "Pichincha": "11:00 AM - 01:00 PM",
+                "Santa Elena": "10:00 AM - 12:00 PM",
+                "Santo Domingo de los Tsáchilas": "01:00 PM - 03:00 PM",
+                "Sucumbíos": "08:00 AM - 10:00 AM",
+                "Tungurahua": "12:00 PM - 02:00 PM",
+                "Zamora-Chinchipe": "09:00 AM - 11:00 AM"
+            };
+
+            if (selectedProvince) {
+                const horario = horarios[selectedProvince];
+                scheduleImageDiv.innerHTML = `<p>Horario de corte de luz para ${selectedProvince}: ${horario}</p>`;
+            }
+        }
+
+        // Nueva función para gestionar comentarios
+        function agregarComentario(event) {
+            event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+
+            const commentInput = document.getElementById('comment-input');
+            const commentText = commentInput.value;
+
+            // Verifica si el comentario está vacío
+            if (commentText.trim() !== "") {
+                const commentList = document.getElementById('comment-list');
+
+                // Crear un nuevo div para el comentario
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment');
+                newComment.textContent = commentText;
+
+                // Añadir el comentario a la lista
+                commentList.appendChild(newComment);
+
+                // Limpiar el campo de entrada
+                commentInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
